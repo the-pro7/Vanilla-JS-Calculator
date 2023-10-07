@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    min-height: 100dvh;
+    background: linear-gradient(to right, rgb(0 150 255) 16%, rgb(0 255 150 / .7))
+}
+
+.title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    letter-spacing: .3rem;
+}
+
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+/*     min-height: 100vh; */
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+}
+
+.calculator-grid > .output {
+    grid-column: 1 / -1;
+    background: rgb(0 0 0 / .78);
+    display: flex;
+    word-break: break-word;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: .5em 1em;
+    letter-spacing: .1rem;
+    position: relative;
+    overflow: clip;
+}
+
+.calculator-grid > .output.animate::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    aspect-ratio: 1;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(7px, 10px);
+    opacity: 0;
+    animation: enlargen 400ms ease-in-out;
+}
+
+@keyframes enlargen {
+    0%{
+     opacity: 1;   
+    }
+
+    75% {
+        opacity: 0.8;
+        transform: scale(100);
+    }
+
+    90% {
+       opacity: 0.5; 
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.output > .previous-operand {
+    color: rgb(255 255 255 / .7);
+    font-size: 2rem;
+}
+
+.output > .current-operand {
+    color: #fff;
+    font-size: 3rem;
+}
+
+.calculator-grid > button {
+    border: 1px solid rgb(255 255 255);
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: rgb(255 255 255 / .75);
+}
+
+.calculator-grid > button:hover {
+    background-color: #fff;
+}
+
+.calculator-grid > .span-two {
+    grid-column: span 2;
+}
+
+.calculator-grid > button[data-equals] {
+    background: #fff;
+}
