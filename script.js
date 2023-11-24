@@ -13,7 +13,7 @@ class Calculator {
     constructor(currentOperandText, previousOperandText) {
         this.currentOperandText = currentOperandText
         this.previousOperandText = previousOperandText
-        // Clear values when ever an instance of the calculator class is called
+        // Clear values whenever an instance of the calculator class is called
         this.clear()
     }
 
@@ -24,7 +24,7 @@ class Calculator {
         this.operation = null
     }
 
-    // Delete current operand by removing the last character using the slice string method
+    // Delete the current operand by removing the last character using the slice string method
     delete() {
         if (this.currentOperand === "") {
             return
@@ -35,7 +35,7 @@ class Calculator {
     // Method to append a number onto the calculator's updateDisplay
     // making sure that as many numbers as possible can be typed
     appendNumber(number) {
-        // if there's already a decimal poin and the user is still clicking a point then just do nothing
+        // if there's already a decimal point and the user is still clicking a point then just do nothing
         if (number === "." && this.currentOperand.includes("."))
             return
         if (this.overwrite) {
@@ -56,7 +56,7 @@ class Calculator {
         // If there's no current operand then do nothing
         if (this.currentOperand === "")
             return
-        // If there's already a previous value then calculate for the result
+        // If there's already a previous value then calculate the result
         if (this.previousOperand !== '') {
             this.evaluate()
         }
@@ -71,7 +71,7 @@ class Calculator {
 
     }
 
-    // Method to include commas if  number if greater than 3 digits e.g 1000 => 1,000
+    // Method to include commas if  the number is greater than 3 digits e.g 1000 => 1,000
     formatNumber(number) {
         // Turn the number into a string
         let stringNumber = number.toString()
